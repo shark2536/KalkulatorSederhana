@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Real-Time</title>
+</head>
+<body>
+    <h1>Kalkulator Sederhana</h1>
+    
+    <input type="number" id="angkaPertama" placeholder="Angka Pertama" oninput="hitung()">
+    <input type="number" id="angkaKedua" placeholder="Angka Kedua" oninput="hitung()">
+    <button id="click" onclick="bersihkanInput()">Clear</button>
+    
+    <h3>Hasil:</h3>
+    <p id="hasilTambah">0 + 0 = 0</p>
+    <p id="hasilKurang">0 - 0 = 0</p>
+    <p id="hasilKali">0 x 0 = 0</p>
+    <p id="hasilBagi">0 / 0 = 0</p>
+
+    <script>
+        function hitung() {
+            let angka1 = Number(document.getElementById('angkaPertama').value) || 0;
+            let angka2 = Number(document.getElementById('angkaKedua').value) || 0;
+
+            let tambah = angka1 + angka2;
+            let kurang = angka1 - angka2;
+            let kali = angka1 * angka2;
+            let bagi = angka2 !== 0 ? (angka1 / angka2) : "Error (dibagi 0)";
+
+            document.getElementById('hasilTambah').innerText = `${angka1} + ${angka2} = ${tambah}`;
+            document.getElementById('hasilKurang').innerText = `${angka1} - ${angka2} = ${kurang}`;
+            document.getElementById('hasilKali').innerText = `${angka1} x ${angka2} = ${kali}`;
+            document.getElementById('hasilBagi').innerText = `${angka1} / ${angka2} = ${bagi}`;
+        }
+
+        function bersihkanInput() {
+            document.getElementById('angkaPertama').value = "";
+            document.getElementById('angkaKedua').value = "";
+            
+            hitung();
+        }
+    </script>
+</body>
+</html>
